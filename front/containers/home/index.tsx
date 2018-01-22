@@ -4,19 +4,20 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import actions from 'actions/index'
 
+import {TomatoButton} from 'components/Btn'
+
 class Home extends React.Component {
     props;
 
     constructor(props) {
         super(props);
         this.props = props;
-        console.log(this.props)
     }
 
     render() {
         return (
             <div>
-                <h1>Home</h1>
+                <TomatoButton>hoge</TomatoButton>
                 <p>Count: {this.props.count}</p>
 
                 <p>
