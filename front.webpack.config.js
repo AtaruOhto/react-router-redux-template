@@ -30,7 +30,7 @@ const getWebpackPlugins = () => {
 
 module.exports = {
     devtool: 'inline-source-map',
-    entry: './front/index.tsx',
+    entry: './front/main.ts',
     output: {
         filename: 'app.js',
         path: BUNDLE_OUTPUT_PATH
