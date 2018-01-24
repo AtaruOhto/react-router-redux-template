@@ -1,13 +1,8 @@
-/// <reference types="node" />
-
-declare global {
-    interface Window {
-        devToolsExtension: any;
-    }
-}
-
 import {createStore, applyMiddleware, compose} from 'redux'
 import {routerMiddleware} from 'react-router-redux'
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+
 import createSagaMiddleware from 'redux-saga'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from 'reducers/index'
@@ -22,7 +17,6 @@ const middleware = [
     sagaMiddleware,
     routerMiddleware(counterHistory)
 ];
-
 
 if (process.env.NODE_ENV === 'development') {
     const devToolsExtension = window.devToolsExtension;

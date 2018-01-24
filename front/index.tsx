@@ -1,7 +1,14 @@
+/// <reference types="node" />
+
+declare global {
+    interface Window {
+        devToolsExtension: any;
+    }
+}
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
 import {counterStore, counterHistory } from 'stores/counterStore'
 import App from 'containers/app/index'
 
