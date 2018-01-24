@@ -1,12 +1,10 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import {routerMiddleware} from 'react-router-redux'
-import { browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-
 import createSagaMiddleware from 'redux-saga'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from 'reducers/index'
 import rootSaga from 'sagas/counterSaga'
+import {setUpReactDevelopmentTool} from 'helpers/reactDevTool'
 
 export const counterHistory = createHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -18,13 +16,7 @@ const middleware = [
     routerMiddleware(counterHistory)
 ];
 
-if (process.env.NODE_ENV === 'development') {
-    const devToolsExtension = window.devToolsExtension;
-
-    if (typeof devToolsExtension === 'function') {
-        enhancers.push(devToolsExtension())
-    }
-}
+setUpReactDevelopmentTool(enhancers);
 
 const composedEnhancers = compose(
     applyMiddleware(...middleware),
