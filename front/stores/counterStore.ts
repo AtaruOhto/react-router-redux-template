@@ -1,19 +1,14 @@
 import {createStore, applyMiddleware, compose} from 'redux'
-import {routerMiddleware} from 'react-router-redux'
-import createSagaMiddleware from 'redux-saga'
-import createHistory from 'history/createBrowserHistory'
+import {counterRouterMiddleware} from "router/couterRouter";
 import rootReducer from 'reducers/index'
-import rootSaga from 'sagas/counterSaga'
 import {setUpReactDevelopmentTool} from 'helpers/reactDevTool'
-
-export const counterHistory = createHistory();
-const sagaMiddleware = createSagaMiddleware();
+import {counterSagaMiddleware} from 'sagas/counterSaga'
 
 const initialState = {};
-const enhancers: Array<any> = [];
+const enhancers: Array<Function> = [];
 const middleware = [
-    sagaMiddleware,
-    routerMiddleware(counterHistory)
+    counterSagaMiddleware,
+    counterRouterMiddleware
 ];
 
 setUpReactDevelopmentTool(enhancers);
@@ -28,5 +23,3 @@ export const counterStore = createStore(
     initialState,
     composedEnhancers
 );
-
-sagaMiddleware.run(rootSaga);

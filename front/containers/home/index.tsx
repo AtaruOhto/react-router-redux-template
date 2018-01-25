@@ -1,11 +1,10 @@
 import React from 'react'
-// import { push } from 'react-router-redux'
-// import { bindActionCreators } from 'redux'
 import {connect, Dispatch} from 'react-redux'
-import actions from 'actions/index'
-
 import {BlueButton, RedButton, GreenButton} from 'styledComponents/Btn'
 import { History } from 'history';
+import actions from 'actions/index'
+import {goAboutPage} from "router/couterRouter";
+
 
 interface IHomeProps {
     count: number
@@ -41,7 +40,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     };
 
     private goAboutPage= () => {
-        this.props.history.push('/go_page')
+        goAboutPage(this.props.history);
     };
 
 
@@ -67,23 +66,15 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 }
 
 const mapStateToProps = (state: any) => {
-    return {count: state.counter};
+    return {
+        count: state.counter,
+
+    };
 };
 
 const mapDispatchToProps = (dispatch: any) =>{
-    return {
-        dispatch: dispatch
-    }
-
-
-    // return bindActionCreators({
-    //     increment: actions.counter.increment,
-    //     decrement: actions.counter.decrement,
-    //     incrementAsync: actions.counter.incrementAsync,
-    //     decrementAsync: actions.counter.decrementAsync,
-    //     changePage: () => push('/about-us')
-    // }, dispatch);
-}
+    return { dispatch: dispatch }
+};
 
 export default connect(
   mapStateToProps,
