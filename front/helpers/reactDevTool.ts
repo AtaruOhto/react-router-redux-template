@@ -4,7 +4,7 @@ declare global {
     interface Window {devToolsExtension: any;}
 }
 
-export const setUpReactDevelopmentTool = (enhancers) => {
+export const setUpReactDevelopmentTool = (enhancers: Array<any>) => {
     if (process.env.NODE_ENV === 'development') {
         const devToolsExtension = window.devToolsExtension;
 

@@ -10,7 +10,7 @@ export const counterHistory = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const initialState = {};
-const enhancers = [];
+const enhancers: Array<any> = [];
 const middleware = [
     sagaMiddleware,
     routerMiddleware(counterHistory)

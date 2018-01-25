@@ -9,9 +9,7 @@ export const renderIndex = () => {
     render(
         <Provider store={counterStore}>
             <ConnectedRouter history={counterHistory}>
-                <div>
-                    <App/>
-                </div>
+                <App/>
             </ConnectedRouter>
         </Provider>,
         document.querySelector('#root')

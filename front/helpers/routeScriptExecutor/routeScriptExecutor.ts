@@ -17,7 +17,7 @@ export class RouteScriptExecutor {
         return null
     };
 
-    public checkIsDefinitionMatch(def): boolean {
+    public checkIsDefinitionMatch(def: IRouterClassCallbackDefinition): boolean {
         return _.intersection(this.hookClassList, def.selectors).length > 0
     }
 }
